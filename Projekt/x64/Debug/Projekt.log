@@ -1,0 +1,56 @@
+﻿  Engine.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Goomba.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  main.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Map.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(201,38): warning C4305: '=': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(224,55): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(232,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,75): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,122): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,166): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,210): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,255): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(378,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(405,63): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(524,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(529,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(806,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(806,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Player.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.cpp(14,15): warning C4305: '=': truncation from 'double' to 'float'
+  Generating Code...
+  Projekt.vcxproj -> C:\Users\fiZZy\Desktop\2D-Platform-Game\x64\Debug\Projekt.exe
