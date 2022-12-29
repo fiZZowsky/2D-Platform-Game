@@ -2,7 +2,8 @@
 #include "Headers.h"
 #include "Settings.h"
 #include "Menu.h"
-#include "Map.h"
+//#include "GameScreen.h"
+#include "OptionsScreen.h"
 #include "AboutScreen.h"
 #include "ScreenManager.h"
 
@@ -18,6 +19,7 @@ public:
 private:
 	ScreenManager* currentScreen;
 	Menu menu;
+	//GameScreen game;
+	OptionsScreen options;
     AboutScreen about;
-	Map map;
 };

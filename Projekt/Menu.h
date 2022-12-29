@@ -6,8 +6,11 @@
 
 class Menu : public ScreenManager {
 public:
-	void set();
-	void draw(sf::RenderWindow& window);
+	Menu();
+	~Menu();
+
+	void set() override;
+	void draw(sf::RenderWindow& window) override;
 
 	void updateMousePosition(sf::Vector2i mousePosition);
 	bool isMouseOverPlay() const;

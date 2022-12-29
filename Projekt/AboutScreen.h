@@ -6,8 +6,11 @@
 
 class AboutScreen : public ScreenManager {
 public:
-	void set();
-	void draw(sf::RenderWindow& window);
+	AboutScreen();
+	~AboutScreen();
+
+	void set() override;
+	void draw(sf::RenderWindow& window) override;
 
 	void updateMousePosition(sf::Vector2i mousePosition);
 	bool isMouseOverBackButton() const;

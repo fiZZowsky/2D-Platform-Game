@@ -1,12 +1,15 @@
 #include "Menu.h"
 
+Menu::Menu() {
+	background.loadFromFile("Images/menuBackground.png");
+	m_font.loadFromFile("font/arial.ttf");
+}
+
+Menu::~Menu() { }
+
 void Menu::set() {
 	//Ustawienie t³a menu
-	background.loadFromFile("Images/menuBackground.png");
 	sprite.setTexture(background);
-
-	// Ustawienie czcionki tekstu
-	m_font.loadFromFile("font/arial.ttf");
 
 	// Ustawienie tekstow dla poszczegolnych opcji
 	options = { "Mario The Game", "Play", "Options", "About", "Quit" };

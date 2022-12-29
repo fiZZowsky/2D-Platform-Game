@@ -1,24 +1,2 @@
-﻿  AboutScreen.cpp
-  Engine.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3,21): error C2011: 'ScreenManager': 'class' type redefinition
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3): message : see declaration of 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\AboutScreen.h(7,50): error C2504: 'ScreenManager': base class undefined
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Menu.h(32,17): error C2027: use of undefined type 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3): message : see declaration of 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Menu.h(32,1): message : This diagnostic occurred in the compiler generated function 'Menu::Menu(void)'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Menu.h(32): message : see reference to function 'Menu::Menu(void)'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Engine.cpp(38,47): error C2440: '=': cannot convert from 'AboutScreen *' to 'ScreenManager *'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Engine.cpp(38,41): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Engine.cpp(52,22): error C2027: use of undefined type 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3): message : see declaration of 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Engine.cpp(54,22): error C2027: use of undefined type 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3): message : see declaration of 'ScreenManager'
-  main.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3,21): error C2011: 'ScreenManager': 'class' type redefinition
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\ScreenManager.h(3): message : see declaration of 'ScreenManager'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\AboutScreen.h(7,50): error C2504: 'ScreenManager': base class undefined
-  Menu.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Menu.cpp(25,37): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
-  Player.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.cpp(14,15): warning C4305: '=': truncation from 'double' to 'float'
-  Generating Code...
+﻿  Engine.cpp
+  Projekt.vcxproj -> C:\Users\fiZZy\Desktop\2D-Platform-Game\x64\Debug\Projekt.exe
