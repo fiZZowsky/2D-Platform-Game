@@ -2,8 +2,6 @@
 #include "ScreenManager.h"
 #include "Settings.h"
 
-using namespace std;
-
 class EndGameScreen : public ScreenManager {
 public:
 	EndGameScreen();
@@ -23,6 +21,7 @@ private:
 	sf::Texture background;
 	sf::Sprite sprite;
 	sf::Font font;
+	sf::Font buttonFont;
 
 	std::vector<const char*> options;
 	std::vector<sf::Vector2f> textsCoords;
@@ -30,6 +29,7 @@ private:
 	std::vector<std::size_t> sizes;
 	sf::Text hightScoreText;
 	sf::Text scoreText;
+	sf::Text buttonText;
 
 	int highscore;
 	int score;

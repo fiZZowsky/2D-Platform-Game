@@ -19,5 +19,5 @@ constexpr unsigned int COINS_NUMBER = 20;
 #define OPTIONS_BUTTON_TEXT_SIZE 36
 
 //EndgameScreen settings
-#define END_GAME_TEXTS_NUMBER 4
+#define END_GAME_TEXTS_NUMBER 3
 #define END_GAME_BUTTONS_TEXT_SIZE 36

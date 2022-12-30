@@ -23,6 +23,9 @@ public:
     void reset();
 
 private:
+    vector <RectangleShape> MAP;
+    vector <Sprite> coins;
+
     //Sounds
     SoundBuffer CoinSoundEffect;
     SoundBuffer Break;

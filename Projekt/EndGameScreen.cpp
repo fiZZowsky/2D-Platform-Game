@@ -1,8 +1,9 @@
 #include "EndGameScreen.h"
 
 EndGameScreen::EndGameScreen() {
-    background.loadFromFile("Images/optionsBackground.png");
+    background.loadFromFile("Images/winBackground.jpg");
     font.loadFromFile("font/Arial.ttf");
+    buttonFont.loadFromFile("font/PublicPixel.ttf");
 }
 
 EndGameScreen::~EndGameScreen() { }
@@ -11,7 +12,7 @@ void EndGameScreen::set() {
     
     sprite.setTexture(background);
     // Ustawienie tekstow dla poszczegolnych opcji
-    options = { "Congratulations", "Your high score: ", "Your current score: ", "Menu"};
+    options = { "Congratulations", "Your high score: ", "Your current score: "};
     texts.resize(END_GAME_TEXTS_NUMBER);
     textsCoords = { {650,120},{100,270},{100,230},{1720,990} };
     sizes = { END_GAME_BUTTONS_TEXT_SIZE * 2,END_GAME_BUTTONS_TEXT_SIZE,END_GAME_BUTTONS_TEXT_SIZE,END_GAME_BUTTONS_TEXT_SIZE };
@@ -36,11 +37,17 @@ void EndGameScreen::set() {
     hightScoreText.setPosition(sf::Vector2f(500, 270));
 
     //Ustawienie przycisku powrotu do menu
-    buttonBack.setPosition(sf::Vector2f(1700, 990));
+    buttonBack.setPosition(sf::Vector2f(1720, 990));
     buttonBack.setSize(sf::Vector2f(160, END_GAME_BUTTONS_TEXT_SIZE + 10));
     buttonBack.setFillColor(sf::Color::Transparent);
-    buttonBack.setOutlineColor(sf::Color::Black);
-    buttonBack.setOutlineThickness(2);
+
+    buttonText.setFont(buttonFont);
+    buttonText.setString("Menu");
+    buttonText.setCharacterSize(END_GAME_BUTTONS_TEXT_SIZE);
+    buttonText.setFillColor(sf::Color::White);
+    buttonText.setPosition(sf::Vector2f(1730, 990));
+    buttonText.setOutlineThickness(2);
+    buttonText.setOutlineColor(sf::Color::Black);
 }
 
 void EndGameScreen::draw(sf::RenderWindow& window) {
@@ -51,6 +58,7 @@ void EndGameScreen::draw(sf::RenderWindow& window) {
         window.draw(t);
     }
     window.draw(buttonBack);
+    window.draw(buttonText);
     updateScore();
     window.draw(scoreText);
     window.draw(hightScoreText);
@@ -73,7 +81,12 @@ void EndGameScreen::updateScore() {
 }
 
 void EndGameScreen::updateMousePosition(sf::Vector2i mousePosition) {
-    buttonBack.setOutlineColor(buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)) ? sf::Color(0, 255, 0) : sf::Color(0, 0, 0));
+    if (buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+        buttonText.setFillColor(sf::Color(0, 0, 0));
+    }
+    else {
+        buttonText.setFillColor(sf::Color(255, 255, 255));
+    }
 }
 
 bool EndGameScreen::isMouseOverBackButton() const {

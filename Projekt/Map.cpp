@@ -32,9 +32,10 @@ Map::Map(){
     score = 0;
     AnimationX = 0;
     FireTime = 0;
+
+    MAP.resize(3200);
+    coins.resize(20);
 }
-vector <RectangleShape> MAP(3200);
-vector <Sprite> coins(20);
 
 int level1[] =
 {
@@ -698,5 +699,38 @@ int Map::getScore()
 }
 
 void Map::reset() {
+    //load textures
+    mush.loadFromFile("Images/mushroom.png");
+    BCoin.loadFromFile("Images/10.png");
+    f.loadFromFile("Images/FireFlower.png");
+    fi.loadFromFile("Images/Fire.png");
+    cointx.loadFromFile("Images/coins.png");
 
+    naarr.setTexture(fi);
+    naarr.setPosition(-50, -50);
+
+    //load audio
+    CoinSoundEffect.loadFromFile("Audio/coin.wav");
+    Break.loadFromFile("Audio/breakblock.wav");
+    Firee.openFromFile("Audio/fireball.wav");
+    Winner.openFromFile("Audio/stage_clear.wav");
+
+    //load fonts
+    font.loadFromFile("font/CollegiateBlackFLF.ttf");
+
+    Win = false;
+    firem = false;
+    firepos = false;
+    mushspawn = false;
+    flowerspawn = false;
+
+    ind = 0;
+    ann = 0;
+    c = 0;
+    score = 0;
+    AnimationX = 0;
+    FireTime = 0;
+
+    vector <RectangleShape> MAP(3200);
+    vector <Sprite> coins(20);
 };

@@ -43,7 +43,7 @@ void Engine::run(){
                     }
                 }
                 if (currentScreen == &map && map.getGameOverState() == true) {
-                       currentScreen = &endGame;
+                    currentScreen = &endGame;
                 }
                 if (currentScreen == &endGame) {
                     if ((endGame.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
