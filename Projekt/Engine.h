@@ -2,10 +2,11 @@
 #include "Headers.h"
 #include "Settings.h"
 #include "Menu.h"
-//#include "GameScreen.h"
+#include "Map.h"
 #include "OptionsScreen.h"
 #include "AboutScreen.h"
 #include "ScreenManager.h"
+#include "EndGameScreen.h"
 
 using namespace std;
 using namespace sf;
@@ -19,7 +20,8 @@ public:
 private:
 	ScreenManager* currentScreen;
 	Menu menu;
-	//GameScreen game;
+	Map map;
+	EndGameScreen endGame;
 	OptionsScreen options;
     AboutScreen about;
 };

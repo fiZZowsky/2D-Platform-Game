@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AboutScreen.cpp" />
+    <ClCompile Include="EndGameScreen.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="GameScreen.cpp" />
     <ClCompile Include="Goomba.cpp" />
@@ -31,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutScreen.h" />
+    <ClInclude Include="EndGameScreen.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="Headers.h" />

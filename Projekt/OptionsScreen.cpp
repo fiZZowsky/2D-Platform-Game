@@ -1,8 +1,8 @@
 #include "OptionsScreen.h"
 
 OptionsScreen::OptionsScreen() {
-	background.loadFromFile("Images/menuBackground.png");
-	font.loadFromFile("font/arial.ttf");
+	background.loadFromFile("Images/optionsBackground.png");
+	font.loadFromFile("font/PublicPixel.ttf");
 }
 
 OptionsScreen::~OptionsScreen() { }
@@ -13,17 +13,17 @@ void OptionsScreen::set() {
 
 	//Ustawienie przycisku powrotu do menu
 	buttonBack.setPosition(sf::Vector2f(1760, 990));
-	buttonBack.setSize(sf::Vector2f(124, ABOUT_BUTTON_TEXT_SIZE + 10));
-	buttonBack.setOutlineThickness(3);
-	buttonBack.setOutlineColor(sf::Color(0, 0, 0));
+	buttonBack.setSize(sf::Vector2f(160, ABOUT_BUTTON_TEXT_SIZE + 10));
 	buttonBack.setFillColor(sf::Color::Transparent);
 
 	//Ustawienie napisu na przycisku
 	buttonText.setFont(font);
 	buttonText.setString("Back");
-	buttonText.setCharacterSize(ABOUT_BUTTON_TEXT_SIZE);
-	buttonText.setFillColor(sf::Color::Black);
+	buttonText.setCharacterSize(OPTIONS_BUTTON_TEXT_SIZE);
+	buttonText.setFillColor(sf::Color::White);
 	buttonText.setPosition(sf::Vector2f(1770, 990));
+	buttonText.setOutlineThickness(2);
+	buttonText.setOutlineColor(sf::Color::Black);
 }
 
 void OptionsScreen::draw(sf::RenderWindow& window){
@@ -34,7 +34,12 @@ void OptionsScreen::draw(sf::RenderWindow& window){
 }
 
 void OptionsScreen::updateMousePosition(sf::Vector2i mousePosition){
-	buttonBack.setOutlineColor(buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)) ? sf::Color(0, 255, 0) : sf::Color(0, 0, 0));
+	if (buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+		buttonText.setFillColor(sf::Color(0, 0, 0));
+	}
+	else {
+		buttonText.setFillColor(sf::Color(255, 255, 255));
+	}
 }
 
 bool OptionsScreen::isMouseOverBackButton() const {

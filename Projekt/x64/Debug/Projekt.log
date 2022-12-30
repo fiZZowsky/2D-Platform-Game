@@ -1,2 +1,45 @@
-﻿  Engine.cpp
+﻿  Map.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(204,38): warning C4305: '=': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(227,55): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(235,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(323,24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(323,75): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(323,122): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(323,166): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(323,210): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(323,255): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(381,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(408,63): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(527,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(532,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(683,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(683,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Projekt.vcxproj -> C:\Users\fiZZy\Desktop\2D-Platform-Game\x64\Debug\Projekt.exe

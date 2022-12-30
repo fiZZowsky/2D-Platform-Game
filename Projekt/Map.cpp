@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map() {
+Map::Map(){
     //load textures
     mush.loadFromFile("Images/mushroom.png");
     BCoin.loadFromFile("Images/10.png");
@@ -19,7 +19,6 @@ Map::Map() {
 
     //load fonts
     font.loadFromFile("font/CollegiateBlackFLF.ttf");
-    font1.loadFromFile("font/PublicPixel-0W5Kvv.ttf");
 
     Win = false;
     firem = false;
@@ -78,7 +77,7 @@ int level1C[16][200] =
 
 RectangleShape Left(Vector2f(1, 16)), Right(Vector2f(1, 16)), Top(Vector2f(12, 1)), Down(Vector2f(12, 1));
 
-void Map::setMap(RenderWindow& window, Event& event) {
+void Map::set() {
     LoadTiles();
     drawLevel(level1);
 
@@ -143,7 +142,15 @@ void Map::setMap(RenderWindow& window, Event& event) {
     for (size_t i = 0; i < 6; i++) {
         counter[i] = 0;
     }
+    player.setPlayer();
+};
 
+void Map::draw(RenderWindow& window) {
+    window.clear(BACKGROUND_COLOR);
+    setMap(window);
+}
+
+void Map::setMap(RenderWindow& window) {
     //////camera////////
     View camera(Vector2f(0.0f, 0.0f), Vector2f(512.0f, 256.0f));
     if (player.getPosition().x <= 255) {
@@ -152,18 +159,14 @@ void Map::setMap(RenderWindow& window, Event& event) {
     else {
         camera.setCenter(player.getPosition());
     }
-    player.setPlayer();
-
+    
     while (window.isOpen()) {
         if (player.getPosition().x >= 182 * 16) {
             Win = true;
             Winner.play();
         }
         player.velocity.x = 0;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed || (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape))
-                window.close();
-        }
+
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             player.velocity.x = -1;
             player.LookingRight = false;
@@ -575,155 +578,27 @@ void Map::setMap(RenderWindow& window, Event& event) {
         }
 
         ///////////////
-        int _highscore;
-        int _score = score;
-
-        if (Win == true) {
-            window.close();
-            RenderWindow window_finish(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "CONGRATULATIONS");
-            window.clear(Color(0, 219, 255));
-            while (window_finish.isOpen()) {
-                while (window_finish.pollEvent(event)) {
-                    if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape))
-                        exit(0);
-                    std::ifstream readFile;
-                    readFile.open("data.txt");
-                    if (readFile.is_open()) {
-                        while (!readFile.eof()) {
-                            readFile >> _highscore;
-                        }
-                    }
-
-                    readFile.close();
-
-                    std::ofstream writeFile("data.txt");
-                    if (writeFile.is_open()) {
-                        if (_score > _highscore) {
-                            _highscore = _score;
-                        }
-                        writeFile << _highscore;
-                    }
-                    readFile.close();
-
-                    t1.setFont(font1);
-                    t1.setFillColor(sf::Color::White);
-                    t1.setString("Your highest score:");
-                    t1.setCharacterSize(20);
-                    t1.setPosition(sf::Vector2f(100, 270));
-
-                    over.setFont(font1);
-                    over.setFillColor(sf::Color::Black);
-                    over.setString("CONGRATULATIONS!");
-                    over.setCharacterSize(25);
-                    over.setPosition(sf::Vector2f(130, 120));
-
-                    t2.setFont(font1);
-                    t2.setFillColor(sf::Color::White);
-                    t2.setString("Your current score:");
-                    t2.setCharacterSize(20);
-                    t2.setPosition(sf::Vector2f(100, 230));
-
-                    string str1 = to_string(_score);
-                    s.setFont(font1);
-                    s.setFillColor(sf::Color::White);
-                    s.setString(str1);
-                    s.setCharacterSize(20);
-                    s.setPosition(sf::Vector2f(500, 230));
-
-                    string str2 = to_string(_highscore);
-                    h.setFont(font1);
-                    h.setFillColor(sf::Color::White);
-                    h.setString(str2);
-                    h.setCharacterSize(20);
-                    h.setPosition(sf::Vector2f(500, 270));
-                }
-                window_finish.clear(Color(0, 219, 255));
-                window_finish.draw(t1);
-                window_finish.draw(t2);
-                window_finish.draw(s);
-                window_finish.draw(h);
-                window_finish.draw(over);
-                window_finish.display();
+        if (Win == true || player.mariodie == 1)
+        {
+            std::ifstream readFile;
+            readFile.open("data.txt");
+            if (readFile.is_open()) {
+                readFile >> _score >> _highscore;
             }
-        }
-        if(player.mariodie == 1){
-            window.close();
-            RenderWindow window_finish(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "GameOver");
-            window_finish.clear(Color(0, 219, 255));
-            while (window_finish.isOpen())
-            {
-                sf::Event event;
-                while (window_finish.pollEvent(event))
-                {
-                    if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape))
-                        exit(0);
+            readFile.close();
 
-
-                    std::ifstream readFile;
-                    readFile.open("data.txt");
-                    if (readFile.is_open())
-                    {
-                        while (!readFile.eof())
-                        {
-                            readFile >> _highscore;
-                        }
-                    }
-                    readFile.close();
-                    std::ofstream writeFile("data.txt");
-                    if (writeFile.is_open())
-                    {
-                        if (_score > _highscore)
-                        {
-                            _highscore = _score;
-                        }
-                        writeFile << _highscore;
-                    }
-                    readFile.close();
-                    t1.setFont(font1);
-                    t1.setFillColor(sf::Color::White);
-                    t1.setString("Your highest score:");
-                    t1.setCharacterSize(20);
-                    t1.setPosition(sf::Vector2f(100, 270));
-
-                    over.setFont(font1);
-                    over.setFillColor(sf::Color::Black);
-                    over.setString("GAME OVER");
-                    over.setCharacterSize(40);
-                    over.setPosition(sf::Vector2f(130, 120));
-
-                    t2.setFont(font1);
-                    t2.setFillColor(sf::Color::White);
-                    t2.setString("Your current score:");
-                    t2.setCharacterSize(20);
-                    t2.setPosition(sf::Vector2f(100, 230));
-
-                    string str1 = to_string(_score);
-                    s.setFont(font1);
-                    s.setFillColor(sf::Color::White);
-                    s.setString(str1);
-                    s.setCharacterSize(20);
-                    s.setPosition(sf::Vector2f(500, 230));
-
-                    string str2 = to_string(_highscore);
-                    h.setFont(font1);
-                    h.setFillColor(sf::Color::White);
-                    h.setString(str2);
-                    h.setCharacterSize(20);
-                    h.setPosition(sf::Vector2f(500, 270));
-
-
-                }
-                window_finish.clear(Color(0, 219, 255));
-                window_finish.draw(t1);
-                window_finish.draw(t2);
-                window_finish.draw(s);
-                window_finish.draw(h);
-                window_finish.draw(over);
-
-                window_finish.display();
+            if (score > _highscore) {
+                _highscore = score;
             }
+            std::ofstream writeFile("data.txt");
+            if (writeFile.is_open()) {
+                writeFile << score << " " << _highscore;
+            }
+            writeFile.close();
 
+            break;
         }
+        
         text.setString("score: " + std::to_string(score));  //Displays Score
 
         window.setView(camera);
@@ -758,6 +633,8 @@ void Map::setMap(RenderWindow& window, Event& event) {
         }
         window.display();
     }
+    setGameOverState(true);
+    window.setView(window.getDefaultView());
 }
 
 void Map::LoadTiles() {
@@ -806,3 +683,20 @@ void Map::drawLevel(int arr[]) {
         MAP[i].setPosition((i % 200) * 16, (i / 200) * 16);
     }
 }
+
+void Map::setGameOverState(bool state) {
+    gameOver = state;
+}
+
+bool Map::getGameOverState() {
+    return gameOver;
+}
+
+int Map::getScore()
+{
+    return score;
+}
+
+void Map::reset() {
+
+};

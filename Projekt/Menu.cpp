@@ -2,7 +2,7 @@
 
 Menu::Menu() {
 	background.loadFromFile("Images/menuBackground.png");
-	m_font.loadFromFile("font/arial.ttf");
+	m_font.loadFromFile("font/PublicPixel.ttf");
 }
 
 Menu::~Menu() { }
@@ -12,38 +12,45 @@ void Menu::set() {
 	sprite.setTexture(background);
 
 	// Ustawienie tekstow dla poszczegolnych opcji
-	options = { "Mario The Game", "Play", "Options", "About", "Quit" };
+	options = { "Play", "Options", "About", "Quit", "Alpha v0.0.7" };
 	texts.resize(MENU_TEXTS_NUMBER);
-	textsCoords = { {700,40},{50,400},{50,480},{50,560},{50,640} };
-	sizes = { MENU_BUTTONS_TEXT_SIZE * 3,MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE };
+	textsCoords = { {865,390},{800,520},{840,650},{865,780}, {1660,1040} };
+	sizes = { MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE, MENU_BUTTONS_TEXT_SIZE - 30 };
 
 	// Ustawienie prostokatow dla poszczegolnych opcji
 	rectangle.resize(MENU_BUTTONS_NUMBER);
-	rectanglesCoords = { {40,400}, {40,480}, {40,560}, {40,640} };
-	rectsSize = { 202,MENU_BUTTONS_TEXT_SIZE + 10 };
+	rectanglesCoords = { {650,380}, {650,510}, {650,640}, {650,770} };
+	rectsSize = { 629,82 };
 
 	for (std::size_t i{}; i < texts.size(); ++i) {
 		texts[i].setFont(m_font);
 		texts[i].setString(options[i]);
 		texts[i].setCharacterSize(sizes[i]);
-		texts[i].setOutlineColor(sf::Color::Black);
 		texts[i].setPosition(textsCoords[i]);
+		texts[i].setOutlineThickness(2);
+		texts[i].setOutlineColor(sf::Color::Black);
 	}
 
 	for (int i = 0; i < rectangle.size(); ++i) {
 		rectangle[i].setSize(rectsSize);
 		rectangle[i].setOutlineThickness(3);
-		rectangle[i].setOutlineColor(sf::Color(0, 0, 0));
+		rectangle[i].setOutlineColor(sf::Color(1, 122, 255));
 		rectangle[i].setPosition(rectanglesCoords[i]);
-		rectangle[i].setFillColor(sf::Color::Transparent);
+		rectangle[i].setFillColor(sf::Color(1,122,255));
 	}
 }
 
-void Menu::updateMousePosition(sf::Vector2i mousePosition)
-{
+void Menu::updateMousePosition(sf::Vector2i mousePosition) {
 	// Aktualizacja stanu prostok¹tów dla opcji (podœwietlenie lub brak podœwietlenia)
 	for (int i = 0; i < rectangle.size(); ++i) {
-		rectangle[i].setOutlineColor(rectangle[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition)) ? sf::Color(0, 255, 0) : sf::Color(0, 0, 0));
+		if (rectangle[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+			rectangle[i].setOutlineColor(sf::Color(0, 0, 0));
+			texts[i].setFillColor(sf::Color(0, 0, 0));
+		}
+		else {
+			rectangle[i].setOutlineColor(sf::Color(1, 122, 255));
+			texts[i].setFillColor(sf::Color(255, 255, 255));
+		}
 	}
 }
 
@@ -71,11 +78,11 @@ void Menu::draw(sf::RenderWindow& window) {
 	window.clear(BACKGROUND_COLOR);
 	window.draw(sprite);
 
-	for (auto t : texts) {
-		window.draw(t);
-	}
-
 	for (auto r : rectangle) {
 		window.draw(r);
+	}
+
+	for (auto t : texts) {
+		window.draw(t);
 	}
 }

@@ -25,7 +25,7 @@ void Engine::run(){
                     // Sprawdzenie, czy kursor myszki jest nad opcj¹ "play" i czy wcisnieto lewy przycisk myszy
                     if ((menu.isMouseOverPlay()) && (event.mouseButton.button == sf::Mouse::Left)) {
                         // Kod do wykonania po klikniêciu na opcjê "play"
-                        //currentScreen = &game;
+                        currentScreen = &map;
                     }
                     // Analogicznie dla pozosta³ych opcji i czy wcisnieto lewy przycisk myszy
                     else if ((menu.isMouseOverOptions()) && (event.mouseButton.button == sf::Mouse::Left)) {
@@ -42,12 +42,14 @@ void Engine::run(){
                         window.close();
                     }
                 }
-                //if (currentScreen == &game) {
-                //    while (window.pollEvent(event)) {
-                //        if (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape)
-                //            currentScreen = &menu;
-                //    }
-                //}
+                if (currentScreen == &map && map.getGameOverState() == true) {
+                       currentScreen = &endGame;
+                }
+                if (currentScreen == &endGame) {
+                    if ((endGame.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        currentScreen = &menu;
+                    }
+                }
                 if (currentScreen == &options) {
                     if ((options.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
                         currentScreen = &menu;
@@ -65,6 +67,7 @@ void Engine::run(){
         window.clear();
 
         menu.updateMousePosition(sf::Mouse::getPosition(window));
+        endGame.updateMousePosition(sf::Mouse::getPosition(window));
         options.updateMousePosition(sf::Mouse::getPosition(window));
         about.updateMousePosition(sf::Mouse::getPosition(window));
 
