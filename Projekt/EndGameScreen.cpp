@@ -9,7 +9,6 @@ EndGameScreen::EndGameScreen() {
 EndGameScreen::~EndGameScreen() { }
 
 void EndGameScreen::set() {
-    
     sprite.setTexture(background);
     // Ustawienie tekstow dla poszczegolnych opcji
     options = { "Congratulations", "Your high score: ", "Your current score: "};

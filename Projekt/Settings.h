@@ -14,6 +14,7 @@ constexpr unsigned int COINS_NUMBER = 20;
 
 //AboutScreen settings
 #define ABOUT_BUTTON_TEXT_SIZE 36
+#define CIRCLES_SIZE 50
 
 //OptionsScreen settings
 #define OPTIONS_BUTTON_TEXT_SIZE 36

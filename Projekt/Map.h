@@ -61,7 +61,7 @@ private:
     bool mushspawn;
     bool flowerspawn;
     bool dieenemy[6];
-    bool  ECBottom[6], ECTop[6], goombafall[6];
+    bool ECBottom[6], ECTop[6], goombafall[6];
     bool ScoreEnemy[6];
     bool firepos;
     bool EnemyMoveRight[6], EnemyMoveLeft[6];

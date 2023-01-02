@@ -17,6 +17,11 @@ public:
 
 	sf::RectangleShape buttonBack;
 private:
+	std::vector<sf::CircleShape> circles;
+	std::vector<sf::Vector2f> circlesPos;
+	std::vector<sf::Texture> images;
+	std::vector<sf::Vector2f> imagesPos;
+
 	sf::Texture background;
 	sf::Sprite sprite;
 	sf::Font font;

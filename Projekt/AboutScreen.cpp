@@ -24,6 +24,17 @@ void AboutScreen::set() {
 	buttonText.setPosition(sf::Vector2f(1770, 990));
 	buttonText.setOutlineThickness(2);
 	buttonText.setOutlineColor(sf::Color::Black);
+
+	//Ustawienie kó³ek z obrazkami
+	circles.resize(4);
+	circlesPos = { {1700,250}, {1750,400}, {1750,550}, {1700,700} };
+	for (std::size_t i{}; i < circles.size(); i++) {
+		circles[i].setRadius(CIRCLES_SIZE);
+		circles[i].setOutlineColor(sf::Color::Black);
+		circles[i].setOutlineThickness(2);
+		circles[i].setPosition(circlesPos[i]);
+		circles[i].setFillColor(sf::Color::Blue);
+	}
 }
 
 void AboutScreen::updateMousePosition(sf::Vector2i mousePosition) {
@@ -44,4 +55,8 @@ void AboutScreen::draw(sf::RenderWindow& window) {
 	window.draw(sprite);
 	window.draw(buttonBack);
 	window.draw(buttonText);
+
+	for (auto c : circles) {
+		window.draw(c);
+	}
 }

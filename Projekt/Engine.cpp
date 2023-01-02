@@ -42,9 +42,11 @@ void Engine::run(){
                         window.close();
                     }
                 }
+                // Kod do wykonania po ukoñczeniu gry
                 if (currentScreen == &map && map.getGameOverState() == true) {
                     currentScreen = &endGame;
                 }
+                // Kod do wykonania po klikniêciu na opcjê "menu" i czy wcisnieto lewy przycisk myszy
                 if (currentScreen == &endGame) {
                     if ((endGame.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
                         currentScreen = &menu;
