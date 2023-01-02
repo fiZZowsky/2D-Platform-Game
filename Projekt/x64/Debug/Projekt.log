@@ -1,56 +1,57 @@
-﻿  Engine.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  AboutScreen.cpp
+  EndGameScreen.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\EndGameScreen.cpp(22,43): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Engine.cpp
   Goomba.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  main.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Map.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(201,38): warning C4305: '=': truncation from 'double' to 'T'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(205,38): warning C4305: '=': truncation from 'double' to 'T'
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(224,55): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(232,53): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(228,55): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(236,53): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(324,24): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,75): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(324,75): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,122): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(324,122): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,166): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(324,166): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,210): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(324,210): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(320,255): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(324,255): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(378,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(405,63): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(524,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(529,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(806,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(806,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(382,28): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(409,63): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(528,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(533,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(684,54): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(684,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Menu.cpp
+C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Menu.cpp(28,37): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  OptionsScreen.cpp
   Player.cpp
-C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.cpp(14,15): warning C4305: '=': truncation from 'double' to 'float'
+  main.cpp
   Generating Code...
   Projekt.vcxproj -> C:\Users\fiZZy\Desktop\2D-Platform-Game\x64\Debug\Projekt.exe

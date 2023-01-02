@@ -1,6 +1,6 @@
 #include "Map.h"
 
-Map::Map() {
+Map::Map(){
     //load textures
     mush.loadFromFile("Images/mushroom.png");
     BCoin.loadFromFile("Images/10.png");
@@ -19,7 +19,6 @@ Map::Map() {
 
     //load fonts
     font.loadFromFile("font/CollegiateBlackFLF.ttf");
-    font1.loadFromFile("font/PublicPixel-0W5Kvv.ttf");
 
     Win = false;
     firem = false;
@@ -33,9 +32,10 @@ Map::Map() {
     score = 0;
     AnimationX = 0;
     FireTime = 0;
+
+    MAP.resize(3200);
+    coins.resize(20);
 }
-vector <RectangleShape> MAP(3200);
-vector <Sprite> coins(20);
 
 int level1[] =
 {
@@ -53,8 +53,8 @@ int level1[] =
   ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,20,21,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,4,4,-1,-1,-1,4,4,4,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,20,21,-1,4,4,4,4,4,4,4,-1,-1,-1,-1,-1,-1,-1,29,-1,-1,-1,-1,-1,-1,23,23,23,23,23,23,23,-1,-1,-1,-1
   ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,4,4,4,-1,-1,-1,4,4,4,4,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,4,4,4,4,4,4,4,4,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,23,23,23,23,23,23,23,-1,-1,-1,-1
   ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-  ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-    ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  ,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-1,-1,-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+  ,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-1,-1,-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
 };
 int level1C[16][200] =
 {
@@ -72,13 +72,13 @@ int level1C[16][200] =
   ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,20,21,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,4,4,-1,-1,-1,4,4,4,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,20,21,-1,4,4,4,4,4,4,4,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,23,23,23,23,23,23,23,-1,-1,-1,-1
   ,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,4,4,4,4,-1,-1,-1,4,4,4,4,-1,-1,-1,-1,18,19,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,18,19,4,4,4,4,4,4,4,4,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,-1,-1,23,23,23,23,23,23,23,-1,-1,-1,-1
   ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-  ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-    ,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-1,-1,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+  ,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-1,-1,-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
+  ,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,-1,-1,-1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2
 };
 
 RectangleShape Left(Vector2f(1, 16)), Right(Vector2f(1, 16)), Top(Vector2f(12, 1)), Down(Vector2f(12, 1));
 
-void Map::setMap(RenderWindow& window, Event& event) {
+void Map::set() {
     LoadTiles();
     drawLevel(level1);
 
@@ -86,26 +86,26 @@ void Map::setMap(RenderWindow& window, Event& event) {
     {
         coins[i].setScale(0.5, 0.5);
         coins[i].setTexture(cointx);
-        if (i == 0) coins[i].setPosition(260, 128);
-        if (i == 1) coins[i].setPosition(480, 192);
-        if (i == 2) coins[i].setPosition(630, 192);
-        if (i == 3) coins[i].setPosition(790, 192);
-        if (i == 4) coins[i].setPosition(1240, 192);
-        if (i == 5) coins[i].setPosition(1270, 192);
-        if (i == 6) coins[i].setPosition(1500, 192);
-        if (i == 7) coins[i].setPosition(2490, 192);
-        if (i == 8) coins[i].setPosition(2570, 192);
-        if (i == 9) coins[i].setPosition(2240, 192);
-        if (i == 10) coins[i].setPosition(1270, 64);
-        if (i == 11) coins[i].setPosition(1330, 64);
-        if (i == 12) coins[i].setPosition(1465, 64);
-        if (i == 13) coins[i].setPosition(1970, 64);
-        if (i == 14) coins[i].setPosition(2072, 64);
-        if (i == 15) coins[i].setPosition(2500, 128);
-        if (i == 16) coins[i].setPosition(970, 192);
-        if (i == 17) coins[i].setPosition(1593, 126);
-        if (i == 18) coins[i].setPosition(2840, 192);
-        if (i == 19) coins[i].setPosition(132 * 16, 192);
+        if (i == 0) coins[i].setPosition(255, 128);
+        if (i == 1) coins[i].setPosition(475, 192);
+        if (i == 2) coins[i].setPosition(625, 192);
+        if (i == 3) coins[i].setPosition(785, 192);
+        if (i == 4) coins[i].setPosition(1235, 192);
+        if (i == 5) coins[i].setPosition(1265, 192);
+        if (i == 6) coins[i].setPosition(1495, 192);
+        if (i == 7) coins[i].setPosition(2485, 192);
+        if (i == 8) coins[i].setPosition(2565, 192);
+        if (i == 9) coins[i].setPosition(2235, 192);
+        if (i == 10) coins[i].setPosition(1265, 64);
+        if (i == 11) coins[i].setPosition(1325, 64);
+        if (i == 12) coins[i].setPosition(1460, 64);
+        if (i == 13) coins[i].setPosition(1965, 64);
+        if (i == 14) coins[i].setPosition(2067, 64);
+        if (i == 15) coins[i].setPosition(2495, 128);
+        if (i == 16) coins[i].setPosition(965, 192);
+        if (i == 17) coins[i].setPosition(1588, 126);
+        if (i == 18) coins[i].setPosition(2835, 192);
+        if (i == 19) coins[i].setPosition(2108, 192);
 
         coins[i].setTextureRect(IntRect(31, 0, 31, 31));
     }
@@ -143,7 +143,15 @@ void Map::setMap(RenderWindow& window, Event& event) {
     for (size_t i = 0; i < 6; i++) {
         counter[i] = 0;
     }
+    player.setPlayer();
+};
 
+void Map::draw(RenderWindow& window) {
+    window.clear(BACKGROUND_COLOR);
+    setMap(window);
+}
+
+void Map::setMap(RenderWindow& window) {
     //////camera////////
     View camera(Vector2f(0.0f, 0.0f), Vector2f(512.0f, 256.0f));
     if (player.getPosition().x <= 255) {
@@ -152,18 +160,14 @@ void Map::setMap(RenderWindow& window, Event& event) {
     else {
         camera.setCenter(player.getPosition());
     }
-    player.setPlayer();
-
+    
     while (window.isOpen()) {
         if (player.getPosition().x >= 182 * 16) {
             Win = true;
             Winner.play();
         }
         player.velocity.x = 0;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed || (event.type == Event::KeyReleased && event.key.code == Keyboard::Escape))
-                window.close();
-        }
+
         if (Keyboard::isKeyPressed(Keyboard::A)) {
             player.velocity.x = -1;
             player.LookingRight = false;
@@ -220,7 +224,7 @@ void Map::setMap(RenderWindow& window, Event& event) {
                 if (level1[i] == 5) {
                     if (i == 1812) {
                         if (!mushspawn) {
-                            mushroom.setPosition(193, 128);
+                            mushroom.setPosition(193, 132);
                             mushroom.setScale(0.8, 0.8);
                             mushroom.setTexture(mush);
                             mushspawn = true;
@@ -228,7 +232,7 @@ void Map::setMap(RenderWindow& window, Event& event) {
                     }
                     else if (i == 1910) {
                         if (!flowerspawn) {
-                            flower.setPosition(110 * 16, 8 * 16);
+                            flower.setPosition(1760, 132);
                             flower.setScale(0.8, 0.8);
                             flower.setTexture(f);
                             flowerspawn = true;
@@ -575,155 +579,27 @@ void Map::setMap(RenderWindow& window, Event& event) {
         }
 
         ///////////////
-        int _highscore;
-        int _score = score;
-
-        if (Win == true) {
-            window.close();
-            RenderWindow window_finish(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "CONGRATULATIONS");
-            window.clear(Color(0, 219, 255));
-            while (window_finish.isOpen()) {
-                while (window_finish.pollEvent(event)) {
-                    if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape))
-                        exit(0);
-                    std::ifstream readFile;
-                    readFile.open("data.txt");
-                    if (readFile.is_open()) {
-                        while (!readFile.eof()) {
-                            readFile >> _highscore;
-                        }
-                    }
-
-                    readFile.close();
-
-                    std::ofstream writeFile("data.txt");
-                    if (writeFile.is_open()) {
-                        if (_score > _highscore) {
-                            _highscore = _score;
-                        }
-                        writeFile << _highscore;
-                    }
-                    readFile.close();
-
-                    t1.setFont(font1);
-                    t1.setFillColor(sf::Color::White);
-                    t1.setString("Your highest score:");
-                    t1.setCharacterSize(20);
-                    t1.setPosition(sf::Vector2f(100, 270));
-
-                    over.setFont(font1);
-                    over.setFillColor(sf::Color::Black);
-                    over.setString("CONGRATULATIONS!");
-                    over.setCharacterSize(25);
-                    over.setPosition(sf::Vector2f(130, 120));
-
-                    t2.setFont(font1);
-                    t2.setFillColor(sf::Color::White);
-                    t2.setString("Your current score:");
-                    t2.setCharacterSize(20);
-                    t2.setPosition(sf::Vector2f(100, 230));
-
-                    string str1 = to_string(_score);
-                    s.setFont(font1);
-                    s.setFillColor(sf::Color::White);
-                    s.setString(str1);
-                    s.setCharacterSize(20);
-                    s.setPosition(sf::Vector2f(500, 230));
-
-                    string str2 = to_string(_highscore);
-                    h.setFont(font1);
-                    h.setFillColor(sf::Color::White);
-                    h.setString(str2);
-                    h.setCharacterSize(20);
-                    h.setPosition(sf::Vector2f(500, 270));
-                }
-                window_finish.clear(Color(0, 219, 255));
-                window_finish.draw(t1);
-                window_finish.draw(t2);
-                window_finish.draw(s);
-                window_finish.draw(h);
-                window_finish.draw(over);
-                window_finish.display();
+        if (Win == true || player.mariodie == 1)
+        {
+            std::ifstream readFile;
+            readFile.open("data.txt");
+            if (readFile.is_open()) {
+                readFile >> _score >> _highscore;
             }
-        }
-        if(player.mariodie == 1){
-            window.close();
-            RenderWindow window_finish(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "GameOver");
-            window_finish.clear(Color(0, 219, 255));
-            while (window_finish.isOpen())
-            {
-                sf::Event event;
-                while (window_finish.pollEvent(event))
-                {
-                    if (event.type == sf::Event::Closed || (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::Escape))
-                        exit(0);
+            readFile.close();
 
-
-                    std::ifstream readFile;
-                    readFile.open("data.txt");
-                    if (readFile.is_open())
-                    {
-                        while (!readFile.eof())
-                        {
-                            readFile >> _highscore;
-                        }
-                    }
-                    readFile.close();
-                    std::ofstream writeFile("data.txt");
-                    if (writeFile.is_open())
-                    {
-                        if (_score > _highscore)
-                        {
-                            _highscore = _score;
-                        }
-                        writeFile << _highscore;
-                    }
-                    readFile.close();
-                    t1.setFont(font1);
-                    t1.setFillColor(sf::Color::White);
-                    t1.setString("Your highest score:");
-                    t1.setCharacterSize(20);
-                    t1.setPosition(sf::Vector2f(100, 270));
-
-                    over.setFont(font1);
-                    over.setFillColor(sf::Color::Black);
-                    over.setString("GAME OVER");
-                    over.setCharacterSize(40);
-                    over.setPosition(sf::Vector2f(130, 120));
-
-                    t2.setFont(font1);
-                    t2.setFillColor(sf::Color::White);
-                    t2.setString("Your current score:");
-                    t2.setCharacterSize(20);
-                    t2.setPosition(sf::Vector2f(100, 230));
-
-                    string str1 = to_string(_score);
-                    s.setFont(font1);
-                    s.setFillColor(sf::Color::White);
-                    s.setString(str1);
-                    s.setCharacterSize(20);
-                    s.setPosition(sf::Vector2f(500, 230));
-
-                    string str2 = to_string(_highscore);
-                    h.setFont(font1);
-                    h.setFillColor(sf::Color::White);
-                    h.setString(str2);
-                    h.setCharacterSize(20);
-                    h.setPosition(sf::Vector2f(500, 270));
-
-
-                }
-                window_finish.clear(Color(0, 219, 255));
-                window_finish.draw(t1);
-                window_finish.draw(t2);
-                window_finish.draw(s);
-                window_finish.draw(h);
-                window_finish.draw(over);
-
-                window_finish.display();
+            if (score > _highscore) {
+                _highscore = score;
             }
+            std::ofstream writeFile("data.txt");
+            if (writeFile.is_open()) {
+                writeFile << score << " " << _highscore;
+            }
+            writeFile.close();
 
+            break;
         }
+        
         text.setString("score: " + std::to_string(score));  //Displays Score
 
         window.setView(camera);
@@ -758,6 +634,8 @@ void Map::setMap(RenderWindow& window, Event& event) {
         }
         window.display();
     }
+    setGameOverState(true);
+    window.setView(window.getDefaultView());
 }
 
 void Map::LoadTiles() {
@@ -806,3 +684,53 @@ void Map::drawLevel(int arr[]) {
         MAP[i].setPosition((i % 200) * 16, (i / 200) * 16);
     }
 }
+
+void Map::setGameOverState(bool state) {
+    gameOver = state;
+}
+
+bool Map::getGameOverState() {
+    return gameOver;
+}
+
+int Map::getScore()
+{
+    return score;
+}
+
+void Map::reset() {
+    //load textures
+    mush.loadFromFile("Images/mushroom.png");
+    BCoin.loadFromFile("Images/10.png");
+    f.loadFromFile("Images/FireFlower.png");
+    fi.loadFromFile("Images/Fire.png");
+    cointx.loadFromFile("Images/coins.png");
+
+    naarr.setTexture(fi);
+    naarr.setPosition(-50, -50);
+
+    //load audio
+    CoinSoundEffect.loadFromFile("Audio/coin.wav");
+    Break.loadFromFile("Audio/breakblock.wav");
+    Firee.openFromFile("Audio/fireball.wav");
+    Winner.openFromFile("Audio/stage_clear.wav");
+
+    //load fonts
+    font.loadFromFile("font/CollegiateBlackFLF.ttf");
+
+    Win = false;
+    firem = false;
+    firepos = false;
+    mushspawn = false;
+    flowerspawn = false;
+
+    ind = 0;
+    ann = 0;
+    c = 0;
+    score = 0;
+    AnimationX = 0;
+    FireTime = 0;
+
+    MAP.resize(3200);
+    coins.resize(20);
+};
