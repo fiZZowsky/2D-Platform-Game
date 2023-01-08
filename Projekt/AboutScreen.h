@@ -14,6 +14,12 @@ public:
 
 	void updateMousePosition(sf::Vector2i mousePosition);
 	bool isMouseOverBackButton() const;
+	bool isMouseOver1Button() const;
+	bool isMouseOver2Button() const;
+	bool isMouseOver3Button() const;
+	bool isMouseOver4Button() const;
+	void setSpeechBubble();
+	//void characterBlinking();
 
 	sf::RectangleShape buttonBack;
 private:
@@ -26,4 +32,14 @@ private:
 	sf::Sprite sprite;
 	sf::Font font;
 	sf::Text buttonText;
+	sf::Text aboutText;
+	sf::Sprite character;
+	sf::Texture characterTexture;
+	sf::Texture mushroomTexture;
+	sf::Texture fireFlower;
+	sf::Texture goomba;
+	sf::Texture coin;
+	sf::ConvexShape shape;
+	sf::RectangleShape textField;
+	sf::Vector2f textPosition;
 };

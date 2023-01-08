@@ -24,4 +24,6 @@ private:
 	EndGameScreen endGame;
 	OptionsScreen options;
     AboutScreen about;
+
+	int counter;
 };
