@@ -434,11 +434,11 @@ void Map::setMap(RenderWindow& window) {
                 }
 
             }
-            if (player.mariodie && player.countmario < 500)
+            /*if (player.mariodie && player.countmario < 500)
             {
                 player.countmario++;
                 window.draw(player.player);
-            }
+            }*/
         }
 
         if (player.mariodie) {
@@ -731,6 +731,35 @@ void Map::reset() {
     AnimationX = 0;
     FireTime = 0;
 
+    // Default nothing map
     MAP.resize(3200);
     coins.resize(20);
+
+    for (int i = 0; i < 3200; i++) {
+        level1[i] = -1;
+    }
+
+    // Load map from file
+    std::ifstream inFile("level.txt");
+    std::string line;
+    int count = 0;
+    
+    while (!inFile.eof())
+    {
+        std::getline(inFile, line, ',');
+
+        std::stringstream ss(line);
+        int value;
+
+        ss >> value;
+        level1[count] = value;
+        count++;
+    }
+
+    inFile.close();
+    
+    player.mariodie = false;
+    player.big_mario = false;
+    player.marioburn = false;
+    set();
 };

@@ -2,7 +2,9 @@
   EndGameScreen.cpp
 C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\EndGameScreen.cpp(22,43): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
   Engine.cpp
+  GameScreen.cpp
   Goomba.cpp
+  main.cpp
   Map.cpp
 C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Map.cpp(205,38): warning C4305: '=': truncation from 'double' to 'T'
           with
@@ -52,6 +54,5 @@ C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Menu.cpp(28,37): warning C4267: 
   OptionsScreen.cpp
   Player.cpp
 C:\Users\fiZZy\Desktop\2D-Platform-Game\Projekt\Player.cpp(14,15): warning C4305: '=': truncation from 'double' to 'float'
-  main.cpp
   Generating Code...
   Projekt.vcxproj -> C:\Users\fiZZy\Desktop\2D-Platform-Game\x64\Debug\Projekt.exe
