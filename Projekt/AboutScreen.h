@@ -18,21 +18,27 @@ public:
 	bool isMouseOver2Button() const;
 	bool isMouseOver3Button() const;
 	bool isMouseOver4Button() const;
-	void setSpeechBubble();
+	void setSpeechBubble(int number);
+	//void reset();
 	//void characterBlinking();
 
-	sf::RectangleShape buttonBack;
+	sf::Text aboutText;
 private:
-	std::vector<sf::CircleShape> circles;
-	std::vector<sf::Vector2f> circlesPos;
+	sf::RectangleShape buttonBack;
 	std::vector<sf::Texture> images;
 	std::vector<sf::Vector2f> imagesPos;
+	std::vector<const char*> options;
+	std::vector<sf::Text> texts;
+
+	sf::CircleShape circle1;
+	sf::CircleShape circle2;
+	sf::CircleShape circle3;
+	sf::CircleShape circle4;
 
 	sf::Texture background;
 	sf::Sprite sprite;
 	sf::Font font;
 	sf::Text buttonText;
-	sf::Text aboutText;
 	sf::Sprite character;
 	sf::Texture characterTexture;
 	sf::Texture mushroomTexture;
@@ -42,4 +48,5 @@ private:
 	sf::ConvexShape shape;
 	sf::RectangleShape textField;
 	sf::Vector2f textPosition;
+
 };

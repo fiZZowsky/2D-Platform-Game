@@ -434,11 +434,15 @@ void Map::setMap(RenderWindow& window) {
                 }
 
             }
-            /*if (player.mariodie && player.countmario < 500)
+            if (player.mariodie && player.countmario < 500)
             {
-                player.countmario++;
-                window.draw(player.player);
-            }*/
+                endText.setFont(font);
+                endText.setCharacterSize(30);
+                endText.setFillColor(Color::Black);
+                endText.setPosition(Vector2f((SCREEN_WIDTH - endText.getGlobalBounds().width) / 2, SCREEN_HEIGHT / 2));
+                endText.setString("Press the right mouse button to continue");
+                window.draw(endText);
+            }
         }
 
         if (player.mariodie) {

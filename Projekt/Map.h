@@ -35,6 +35,7 @@ private:
 
     //Texts
     Text text;
+    Text endText;
 
     //Fonts
     Font font;

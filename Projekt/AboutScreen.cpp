@@ -51,25 +51,45 @@ void AboutScreen::set() {
 	aboutText.setFont(font);
 	aboutText.setCharacterSize(14);
 	aboutText.setFillColor(sf::Color::Black);
-	aboutText.setString("Wybierz jedn¹ z opcji po prawej!");
+	//aboutText.setString("Choose one of the options on the right!");
+	aboutText.setPosition(sf::Vector2f(410, 590));
 	textField.setPosition(sf::Vector2f(410, 590));
 	textField.setSize(sf::Vector2f(300, 180));
-	textPosition.x = textField.getPosition().x;
-	textPosition.y = textField.getPosition().y;
+	textField.setFillColor(sf::Color::White);
+	textPosition.x = textField.getPosition().x + 10;
+	textPosition.y = textField.getPosition().y + 10;
 
 	//Ustawienie kó³ek z obrazkami
-	circles.resize(4);
-	circlesPos = { {1700,250}, {1750,400}, {1750,550}, {1700,700} };
-	for (std::size_t i{}; i < circles.size(); i++) {
-		circles[i].setRadius(CIRCLES_SIZE);
-		circles[i].setOutlineColor(sf::Color::Black);
-		circles[i].setOutlineThickness(2);
-		circles[i].setPosition(circlesPos[i]);
+
+	circle1.setPosition(sf::Vector2f(1700, 250));
+	circle2.setPosition(sf::Vector2f(1750, 400));
+	circle3.setPosition(sf::Vector2f(1750, 550));
+	circle4.setPosition(sf::Vector2f(1700, 700));
+	circle1.setRadius(CIRCLES_SIZE);
+	circle2.setRadius(CIRCLES_SIZE);
+	circle3.setRadius(CIRCLES_SIZE);
+	circle4.setRadius(CIRCLES_SIZE);
+	circle1.setOutlineColor(sf::Color::Black);
+	circle2.setOutlineColor(sf::Color::Black);
+	circle3.setOutlineColor(sf::Color::Black);
+	circle4.setOutlineColor(sf::Color::Black);
+	circle1.setOutlineThickness(2);
+	circle2.setOutlineThickness(2);
+	circle3.setOutlineThickness(2);
+	circle4.setOutlineThickness(2);
+	circle1.setTexture(&mushroomTexture);
+	circle2.setTexture(&fireFlower);
+	circle3.setTexture(&goomba);
+	circle4.setTexture(&coin);
+
+	options = { "After collecting it, I will grow taller and have more strength. We can even break rocks!",
+		"After collecting it, I get the ability to shoot fire!", "Watch out for him! It can hurt me.",
+		"A little gold never hurt anyone. :)" };
+
+	texts.resize(4);
+	for (std::size_t i{}; i < texts.size(); ++i) {
+		texts[i].setString(options[i]);
 	}
-	circles[0].setTexture(&mushroomTexture);
-	circles[1].setTexture(&fireFlower);
-	circles[2].setTexture(&goomba);
-	circles[3].setTexture(&coin);
 }
 
 void AboutScreen::updateMousePosition(sf::Vector2i mousePosition) {
@@ -80,13 +100,29 @@ void AboutScreen::updateMousePosition(sf::Vector2i mousePosition) {
 		buttonText.setFillColor(sf::Color(255, 255, 255));
 	}
 
-	for (int i = 0; i < circles.size(); ++i) {
-		if (circles[i].getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
-			circles[i].setOutlineColor(sf::Color(0, 0, 0));
-		}
-		else {
-			circles[i].setOutlineColor(sf::Color(1, 122, 255));
-		}
+	if (circle1.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+		circle1.setOutlineColor(sf::Color(0, 0, 0));
+	}
+	else {
+		circle1.setOutlineColor(sf::Color(1, 122, 255));
+	}
+	if (circle2.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+		circle2.setOutlineColor(sf::Color(0, 0, 0));
+	}
+	else {
+		circle2.setOutlineColor(sf::Color(1, 122, 255));
+	}
+	if (circle3.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+		circle3.setOutlineColor(sf::Color(0, 0, 0));
+	}
+	else {
+		circle3.setOutlineColor(sf::Color(1, 122, 255));
+	}
+	if (circle4.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+		circle4.setOutlineColor(sf::Color(0, 0, 0));
+	}
+	else {
+		circle4.setOutlineColor(sf::Color(1, 122, 255));
 	}
 }
 
@@ -95,53 +131,47 @@ bool AboutScreen::isMouseOverBackButton() const {
 }
 
 bool AboutScreen::isMouseOver1Button() const {
-	return circles[0].getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
+	return circle1.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
 }
 
 bool AboutScreen::isMouseOver2Button() const {
-	return circles[1].getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
+	return circle2.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
 }
 
 bool AboutScreen::isMouseOver3Button() const {
-	return circles[2].getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
+	return circle3.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
 }
 
 bool AboutScreen::isMouseOver4Button() const {
-	return circles[3].getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
+	return circle4.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
 }
 
-void AboutScreen::setSpeechBubble(){
-	if (isMouseOver1Button() && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		aboutText.setString("Po jego zebraniu urosnê i bedê mia³ wiêcej si³y. Mo¿emy wtedy niszczyæ nawet ska³y!");
-	} else if (isMouseOver2Button() && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		aboutText.setString("Po jego zebraniu otrzymujê umiejêtnoœæ strzelania ogniem!");
-	} else if (isMouseOver3Button() && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		aboutText.setString("Uwa¿aj na niego! Mo¿e mnie zraniæ.");
-	} else if (isMouseOver4Button() && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-		aboutText.setString("Trochê z³ota nikomu nie zaszkodzi. :)");
-	}
+void AboutScreen::setSpeechBubble(int number){
 
-	// Iteracja po ka¿dym s³owie tekstu
+	aboutText.setString(texts[number].getString());
+	
+	// Obliczenie i ustawienie szerokoœci prostok¹ta tak, aby móg³ pomieœciæ tekst
+	float width = aboutText.getLocalBounds().width + 20;
+	textField.setSize(sf::Vector2f(width, textField.getSize().y));
+
+	// Obliczenie i ustawienie wysokoœci prostok¹ta tak, aby móg³ pomieœciæ tekst
+	int lines = aboutText.getString().getSize() / (width / 14);
+	float height = (lines + 1) * 14 + 20;
+	textField.setSize(sf::Vector2f(textField.getSize().x, height));
+
+	// Ustawienie tekstu tak, aby by³ automatycznie przenoszony do nowych linii
+	aboutText.setPosition(textField.getPosition().x + 10, textField.getPosition().y + 10);
 	std::string str = aboutText.getString();
-	std::size_t lastSpace = 0;
-	for (std::size_t i = 0; i < str.size(); ++i) {
-		// Znalezienie koñca s³owa
-		if (str[i] == ' ')
-			lastSpace = i;
-		// Ustawienie tekstu na pozycji w prostok¹cie
-		aboutText.setString(str.substr(0, i + 1));
-		aboutText.setPosition(textPosition);
-
-		// Sprawdzenie, czy tekst wychodzi poza obszar prostok¹ta
-		sf::FloatRect textBounds = aboutText.getLocalBounds();
-		if (textBounds.left + textBounds.width > textField.getSize().x) {
-			// Powrót do ostatniego wyst¹pienia spacji i wyœwietlenie tekstu w nowej linii
-			aboutText.setString(str.substr(lastSpace + 1, i - lastSpace));
-			textPosition.x = textField.getPosition().x;
-			textPosition.y += textBounds.height;
-			aboutText.setPosition(textPosition);
-		}
+	int start = 0;
+	for (int i = 0; i < lines; i++)
+	{
+		int end = str.find(" ", start + width / 14);
+		if (end == std::string::npos)
+			end = str.length();
+		str.replace(end, 1, "\n");
+		start = end;
 	}
+	//std::cout << aboutText.getString().toAnsiString() << std::endl;
 }
 
 //void AboutScreen::characterBlinking() {
@@ -164,9 +194,15 @@ void AboutScreen::draw(sf::RenderWindow& window) {
 	window.draw(character);
 	window.draw(shape);
 	window.draw(textField);
+	window.draw(circle1);
+	window.draw(circle2);
+	window.draw(circle3);
+	window.draw(circle4);
 	window.draw(aboutText);
-	for (auto c : circles) {
-		window.draw(c);
-	}
-	setSpeechBubble();
 }
+
+//void AboutScreen::reset() {
+// for (int i = 0; i < 4; i++) {
+//		isButtonSelected[i] = false;
+//	}
+//}

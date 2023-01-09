@@ -74,6 +74,18 @@ void Engine::run(){
                     if ((about.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
                         currentScreen = &menu;
                     }
+                    if ((about.isMouseOver1Button()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        about.setSpeechBubble(0);
+                    }
+                    if ((about.isMouseOver2Button()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        about.setSpeechBubble(1);
+                    }
+                    else if ((about.isMouseOver3Button()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        about.setSpeechBubble(2);
+                    }
+                    else if ((about.isMouseOver4Button()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        about.setSpeechBubble(3);
+                    }
                 }
             }
         }
