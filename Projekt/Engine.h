@@ -3,10 +3,11 @@
 #include "Settings.h"
 #include "Menu.h"
 #include "Map.h"
-#include "OptionsScreen.h"
 #include "AboutScreen.h"
 #include "ScreenManager.h"
 #include "EndGameScreen.h"
+#include "WinGameScreen.h"
+#include "MenuMusic.h"
 
 using namespace std;
 using namespace sf;
@@ -22,8 +23,17 @@ private:
 	Menu menu;
 	Map map;
 	EndGameScreen endGame;
-	OptionsScreen options;
+	WinGameScreen winGame;
     AboutScreen about;
+	MenuMusic m_music;
 
 	int counter;
+	bool isMusicMuted;
+
+	//Przycisk do wy³¹czania/w³¹czania muzyki w menu 
+	sf::RectangleShape muteButton;
+	sf::Text muteButtonText;
+	sf::Texture muteButtonTexture;
+	sf::Texture unmuteButtonTexture;
+	sf::Sprite muteButtonSprite;
 };

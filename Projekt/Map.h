@@ -22,6 +22,7 @@ public:
     int getScore();
     void reset();
 
+    bool Win;
 private:
     vector <RectangleShape> MAP;
     vector <Sprite> coins;
@@ -58,7 +59,6 @@ private:
 
     //bool
     bool firem;
-    bool Win;
     bool mushspawn;
     bool flowerspawn;
     bool dieenemy[6];

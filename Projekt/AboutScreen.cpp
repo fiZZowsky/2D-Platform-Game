@@ -51,13 +51,7 @@ void AboutScreen::set() {
 	aboutText.setFont(font);
 	aboutText.setCharacterSize(14);
 	aboutText.setFillColor(sf::Color::Black);
-	//aboutText.setString("Choose one of the options on the right!");
 	aboutText.setPosition(sf::Vector2f(410, 590));
-	textField.setPosition(sf::Vector2f(410, 590));
-	textField.setSize(sf::Vector2f(300, 180));
-	textField.setFillColor(sf::Color::White);
-	textPosition.x = textField.getPosition().x + 10;
-	textPosition.y = textField.getPosition().y + 10;
 
 	//Ustawienie kó³ek z obrazkami
 
@@ -82,9 +76,9 @@ void AboutScreen::set() {
 	circle3.setTexture(&goomba);
 	circle4.setTexture(&coin);
 
-	options = { "After collecting it, I will grow taller and have more strength. We can even break rocks!",
-		"After collecting it, I get the ability to shoot fire!", "Watch out for him! It can hurt me.",
-		"A little gold never hurt anyone. :)" };
+	options = { "After collecting it, I\nwill grow taller and\nhave more strength. We\ncan even break rocks!",
+		"After collecting it, I\nget the ability to\nshoot fire!", "Watch out for him! It\ncan hurt me.",
+		"A little gold never\nhurt anyone. :)" };
 
 	texts.resize(4);
 	for (std::size_t i{}; i < texts.size(); ++i) {
@@ -149,41 +143,7 @@ bool AboutScreen::isMouseOver4Button() const {
 void AboutScreen::setSpeechBubble(int number){
 
 	aboutText.setString(texts[number].getString());
-	
-	// Obliczenie i ustawienie szerokoœci prostok¹ta tak, aby móg³ pomieœciæ tekst
-	float width = aboutText.getLocalBounds().width + 20;
-	textField.setSize(sf::Vector2f(width, textField.getSize().y));
-
-	// Obliczenie i ustawienie wysokoœci prostok¹ta tak, aby móg³ pomieœciæ tekst
-	int lines = aboutText.getString().getSize() / (width / 14);
-	float height = (lines + 1) * 14 + 20;
-	textField.setSize(sf::Vector2f(textField.getSize().x, height));
-
-	// Ustawienie tekstu tak, aby by³ automatycznie przenoszony do nowych linii
-	aboutText.setPosition(textField.getPosition().x + 10, textField.getPosition().y + 10);
-	std::string str = aboutText.getString();
-	int start = 0;
-	for (int i = 0; i < lines; i++)
-	{
-		int end = str.find(" ", start + width / 14);
-		if (end == std::string::npos)
-			end = str.length();
-		str.replace(end, 1, "\n");
-		start = end;
-	}
-	//std::cout << aboutText.getString().toAnsiString() << std::endl;
 }
-
-//void AboutScreen::characterBlinking() {
-//	int i = 0;
-//	while (i < 2) {
-//		character.setTextureRect(sf::IntRect(i * 50, i * 50, 50, 66));
-//		i++;
-//		std::this_thread::sleep_for(std::chrono::seconds(2));
-//		if (i == 2)
-//			i = 0;
-//	}
-//}
 
 
 void AboutScreen::draw(sf::RenderWindow& window) {
@@ -193,7 +153,6 @@ void AboutScreen::draw(sf::RenderWindow& window) {
 	window.draw(buttonText);
 	window.draw(character);
 	window.draw(shape);
-	window.draw(textField);
 	window.draw(circle1);
 	window.draw(circle2);
 	window.draw(circle3);
@@ -201,8 +160,6 @@ void AboutScreen::draw(sf::RenderWindow& window) {
 	window.draw(aboutText);
 }
 
-//void AboutScreen::reset() {
-// for (int i = 0; i < 4; i++) {
-//		isButtonSelected[i] = false;
-//	}
-//}
+void AboutScreen::reset() {
+	aboutText.setString("Choose one of the\noptions!");
+}

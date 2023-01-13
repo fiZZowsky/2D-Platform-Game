@@ -8,7 +8,7 @@
 constexpr unsigned int COINS_NUMBER = 20;
 
 //Menu settings
-#define MENU_TEXTS_NUMBER 5
+#define MENU_TEXTS_NUMBER 4
 #define MENU_BUTTONS_NUMBER 4
 #define MENU_BUTTONS_TEXT_SIZE 50
 

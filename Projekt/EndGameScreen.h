@@ -1,6 +1,8 @@
 #pragma once
-#include "ScreenManager.h"
+
+#include "Headers.h"
 #include "Settings.h"
+#include "ScreenManager.h"
 
 class EndGameScreen : public ScreenManager {
 public:
@@ -9,28 +11,22 @@ public:
 
 	void set() override;
 	void draw(sf::RenderWindow& window) override;
-
+	void updateScore();
 	void updateMousePosition(sf::Vector2i mousePosition);
 	bool isMouseOverBackButton() const;
 
-	void updateScore();
-
-	sf::RectangleShape buttonBack;
-
 private:
+	std::vector<const char*> gravesideOptions;
+	std::vector<sf::Vector2f> textsCoords;
+	std::vector<sf::Text> gravesideTexts;
+
 	sf::Texture background;
 	sf::Sprite sprite;
-	sf::Font font;
-	sf::Font buttonFont;
 
-	std::vector<const char*> options;
-	std::vector<sf::Vector2f> textsCoords;
-	std::vector<sf::Text> texts;
-	std::vector<std::size_t> sizes;
-	sf::Text hightScoreText;
-	sf::Text scoreText;
+	sf::RectangleShape buttonBack;
+	sf::Font font;
+	sf::Font gravesideFont;
 	sf::Text buttonText;
 
-	int highscore;
 	int score;
 };

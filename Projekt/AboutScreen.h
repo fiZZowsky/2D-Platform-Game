@@ -19,10 +19,8 @@ public:
 	bool isMouseOver3Button() const;
 	bool isMouseOver4Button() const;
 	void setSpeechBubble(int number);
-	//void reset();
-	//void characterBlinking();
-
-	sf::Text aboutText;
+	void reset();
+	
 private:
 	sf::RectangleShape buttonBack;
 	std::vector<sf::Texture> images;
@@ -39,6 +37,7 @@ private:
 	sf::Sprite sprite;
 	sf::Font font;
 	sf::Text buttonText;
+	sf::Text aboutText;
 	sf::Sprite character;
 	sf::Texture characterTexture;
 	sf::Texture mushroomTexture;
@@ -46,7 +45,4 @@ private:
 	sf::Texture goomba;
 	sf::Texture coin;
 	sf::ConvexShape shape;
-	sf::RectangleShape textField;
-	sf::Vector2f textPosition;
-
 };

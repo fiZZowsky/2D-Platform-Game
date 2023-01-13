@@ -1,93 +1,84 @@
 #include "EndGameScreen.h"
 
 EndGameScreen::EndGameScreen() {
-    background.loadFromFile("Images/winBackground.jpg");
-    font.loadFromFile("font/Arial.ttf");
-    buttonFont.loadFromFile("font/PublicPixel.ttf");
+	background.loadFromFile("Images/loseBackground.png");
+	font.loadFromFile("font/PublicPixel.ttf");
+	gravesideFont.loadFromFile("font/Nova.ttf");
 }
 
-EndGameScreen::~EndGameScreen() { }
+EndGameScreen::~EndGameScreen() {}
 
 void EndGameScreen::set() {
-    sprite.setTexture(background);
-    // Ustawienie tekstow dla poszczegolnych opcji
-    options = { "Congratulations", "Your high score: ", "Your current score: "};
-    texts.resize(END_GAME_TEXTS_NUMBER);
-    textsCoords = { {650,120},{100,270},{100,230},{1720,990} };
-    sizes = { END_GAME_BUTTONS_TEXT_SIZE * 2,END_GAME_BUTTONS_TEXT_SIZE,END_GAME_BUTTONS_TEXT_SIZE,END_GAME_BUTTONS_TEXT_SIZE };
+	//Ustawienie t³a menu
+	sprite.setTexture(background);
 
-    for (std::size_t i{}; i < texts.size(); ++i) {
-        texts[i].setFont(font);
-        texts[i].setString(options[i]);
-        texts[i].setCharacterSize(sizes[i]);
-        texts[i].setPosition(textsCoords[i]);
-        texts[i].setOutlineThickness(2);
-        texts[i].setOutlineColor(sf::Color::Black);
-    }
+	//Ustawienie przycisku powrotu do menu
+	buttonBack.setPosition(sf::Vector2f(1760, 990));
+	buttonBack.setSize(sf::Vector2f(160, ABOUT_BUTTON_TEXT_SIZE + 10));
+	buttonBack.setFillColor(sf::Color::Transparent);
 
-    scoreText.setFont(font);
-    scoreText.setFillColor(sf::Color::White); 
-    scoreText.setCharacterSize(END_GAME_BUTTONS_TEXT_SIZE);
-    scoreText.setPosition(sf::Vector2f(500, 230));
+	//Ustawienie napisu na przycisku
+	buttonText.setFont(font);
+	buttonText.setString("Back");
+	buttonText.setCharacterSize(ABOUT_BUTTON_TEXT_SIZE);
+	buttonText.setFillColor(sf::Color::White);
+	buttonText.setPosition(sf::Vector2f(1780, 990));
+	buttonText.setOutlineThickness(2);
+	buttonText.setOutlineColor(sf::Color::Black);
 
-    hightScoreText.setFont(font);
-    hightScoreText.setFillColor(sf::Color::White);
-    hightScoreText.setCharacterSize(END_GAME_BUTTONS_TEXT_SIZE);
-    hightScoreText.setPosition(sf::Vector2f(500, 270));
+	//Ustawienie napisow na grobie
+	gravesideOptions = { "RIP", "MARIO" };
+	gravesideTexts.resize(4);
+	textsCoords = { {1580, 680}, {1550,740},  {1610, 800}, {1510, 860} };
+	
+	for (std::size_t i{}; i < gravesideTexts.size(); ++i) {
+		gravesideTexts[i].setFont(gravesideFont);
+		
+		gravesideTexts[i].setFillColor(sf::Color(69, 59, 60));
+		gravesideTexts[i].setCharacterSize(40);
+		gravesideTexts[i].setPosition(textsCoords[i]);
+	}
 
-    //Ustawienie przycisku powrotu do menu
-    buttonBack.setPosition(sf::Vector2f(1720, 990));
-    buttonBack.setSize(sf::Vector2f(160, END_GAME_BUTTONS_TEXT_SIZE + 10));
-    buttonBack.setFillColor(sf::Color::Transparent);
+	gravesideTexts[0].setString(gravesideOptions[0]);
+	gravesideTexts[1].setString(gravesideOptions[1]);
+	gravesideTexts[3].setString(__DATE__);
+}
 
-    buttonText.setFont(buttonFont);
-    buttonText.setString("Menu");
-    buttonText.setCharacterSize(END_GAME_BUTTONS_TEXT_SIZE);
-    buttonText.setFillColor(sf::Color::White);
-    buttonText.setPosition(sf::Vector2f(1730, 990));
-    buttonText.setOutlineThickness(2);
-    buttonText.setOutlineColor(sf::Color::Black);
+void EndGameScreen::updateScore() {
+
+	std::ifstream readFile;
+	readFile.open("data.txt");
+	if (readFile.is_open()) {
+		readFile >> score;
+	}
+
+	readFile.close();
+
+	std::string str1 = std::to_string(score);
+	gravesideTexts[2].setString(str1);
+}
+
+void EndGameScreen::updateMousePosition(sf::Vector2i mousePosition) {
+	if (buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
+		buttonText.setFillColor(sf::Color(0, 0, 0));
+	}
+	else {
+		buttonText.setFillColor(sf::Color(255, 255, 255));
+	}
+}
+
+bool EndGameScreen::isMouseOverBackButton() const {
+	return buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
 }
 
 void EndGameScreen::draw(sf::RenderWindow& window) {
 	window.clear(BACKGROUND_COLOR);
 	window.draw(sprite);
-    
-    for (auto t : texts) {
-        window.draw(t);
-    }
-    window.draw(buttonBack);
-    window.draw(buttonText);
-    updateScore();
-    window.draw(scoreText);
-    window.draw(hightScoreText);
-}
+	window.draw(buttonBack);
+	window.draw(buttonText);
 
-void EndGameScreen::updateScore() {
+	updateScore();
 
-    std::ifstream readFile;
-    readFile.open("data.txt");
-    if (readFile.is_open()) {
-        readFile >> score >> highscore;
-    }
-
-    readFile.close();
-
-    std::string str1 = std::to_string(score);
-    scoreText.setString(str1);
-    std::string str2 = std::to_string(highscore);
-    hightScoreText.setString(str2);
-}
-
-void EndGameScreen::updateMousePosition(sf::Vector2i mousePosition) {
-    if (buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(mousePosition))) {
-        buttonText.setFillColor(sf::Color(0, 0, 0));
-    }
-    else {
-        buttonText.setFillColor(sf::Color(255, 255, 255));
-    }
-}
-
-bool EndGameScreen::isMouseOverBackButton() const {
-    return buttonBack.getGlobalBounds().contains(static_cast<sf::Vector2f>(sf::Mouse::getPosition()));
+	for(auto g : gravesideTexts)
+	window.draw(g);
 }

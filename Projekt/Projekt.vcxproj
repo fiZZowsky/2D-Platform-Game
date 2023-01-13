@@ -27,8 +27,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="OptionsScreen.cpp" />
+    <ClCompile Include="MenuMusic.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="WinGameScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AboutScreen.h" />
@@ -38,10 +39,11 @@
     <ClInclude Include="Headers.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Menu.h" />
-    <ClInclude Include="OptionsScreen.h" />
+    <ClInclude Include="MenuMusic.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Settings.h" />
+    <ClInclude Include="WinGameScreen.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

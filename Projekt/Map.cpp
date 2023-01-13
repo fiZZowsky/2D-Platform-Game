@@ -405,8 +405,9 @@ void Map::setMap(RenderWindow& window) {
             {
                 if (player.big_mario || player.marioburn) {
 
-                    if (player.getPosition().y > 13 * 16)
+                    if (player.getPosition().y > 13 * 16) {
                         player.player.setPosition(1098.64, 192);
+                    } 
                     else
                     {
                         if (EnemySpeed[i].x > 0)
@@ -434,8 +435,10 @@ void Map::setMap(RenderWindow& window) {
                 }
 
             }
-            if (player.mariodie && player.countmario < 500)
+            if (player.mariodie || Win == true)
             {
+                mushroom.setScale(0, 0);
+                flower.setScale(0, 0);
                 endText.setFont(font);
                 endText.setCharacterSize(30);
                 endText.setFillColor(Color::Black);
@@ -484,6 +487,7 @@ void Map::setMap(RenderWindow& window) {
             sound.setBuffer(player.PowerUp);
             sound.play();
             player.big_mario = true;
+            player.player.setPosition(Vector2f(player.player.getPosition().x, 98));
             mushroom.setScale(0, 0);
             firem = false;
             naarr.setPosition(-5, -5);
@@ -638,7 +642,11 @@ void Map::setMap(RenderWindow& window) {
         }
         window.display();
     }
-    setGameOverState(true);
+
+    if (player.mariodie) {
+        setGameOverState(true);
+    }
+    
     window.setView(window.getDefaultView());
 }
 
@@ -727,6 +735,7 @@ void Map::reset() {
     firepos = false;
     mushspawn = false;
     flowerspawn = false;
+    gameOver = false;
 
     ind = 0;
     ann = 0;

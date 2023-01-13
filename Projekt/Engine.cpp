@@ -1,14 +1,19 @@
 #include "Engine.h"
 
-Engine::Engine() { }
+Engine::Engine() { 
+    isMusicMuted = false;
+}
 
 Engine::~Engine() { }
 
-void Engine::run(){
+void Engine::run() {
     sf::RenderWindow window(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "2D Platform Game", sf::Style::Fullscreen);
-    
-    int i = 0;
+
+    int changeScreen = 0;
     currentScreen = &menu;
+    //Uruchomienie muzyki
+    m_music.start();
+
 
     while (window.isOpen())
     {
@@ -19,58 +24,93 @@ void Engine::run(){
             if (event.type == sf::Event::Closed) {
                 exit(0);
             }
-            // Obs³uga klikniêæ myszk¹
+            // Obs?uga klikni?? myszk?
             if (event.type == sf::Event::MouseButtonReleased)
             {
                 if (currentScreen == &menu) {
-                    // Sprawdzenie, czy kursor myszki jest nad opcj¹ "play" i czy wcisnieto lewy przycisk myszy
+                    // Sprawdzenie, czy kursor myszki jest nad opcj? "play" i czy wcisnieto lewy przycisk myszy
                     if ((menu.isMouseOverPlay()) && (event.mouseButton.button == sf::Mouse::Left)) {
+
                         if (counter > 0) {
                             counter = 0;
                             map.reset();
                         }
-                        // Kod do wykonania po klikniêciu na opcjê "play"
+                        // Kod do wykonania po klikni?ciu na opcj? "play"
                         currentScreen = &map;
                         counter++;
                     }
-                    // Analogicznie dla pozosta³ych opcji i czy wcisnieto lewy przycisk myszy
-                    else if ((menu.isMouseOverOptions()) && (event.mouseButton.button == sf::Mouse::Left)) {
-                        // Kod do wykonania po klikniêciu na opcjê "options" i czy wcisnieto lewy przycisk myszy
-                        currentScreen = &options;
-                    }
                     else if ((menu.isMouseOverAbout()) && (event.mouseButton.button == sf::Mouse::Left)) {
-                        // Kod do wykonania po klikniêciu na opcjê "about" i czy wcisnieto lewy przycisk myszy
+                        // Kod do wykonania po klikni?ciu na opcj? "about" i czy wcisnieto lewy przycisk myszy
                         currentScreen = &about;
                     }
                     else if ((menu.isMouseOverExit()) && (event.mouseButton.button == sf::Mouse::Left))
                     {
-                        // Kod do wykonania po klikniêciu na opcjê "exit" i czy wcisnieto lewy przycisk myszy
+                        // Kod do wykonania po klikni?ciu na opcj? "exit" i czy wcisnieto lewy przycisk myszy
                         window.close();
                     }
+                    else if ((menu.isMouseOverMute()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        if (isMusicMuted == false) {
+                            isMusicMuted = true;
+                            m_music.setVolume(0);
+                            menu.setMuteButton(isMusicMuted);
+                        }
+                        else {
+                            isMusicMuted = false;
+                            m_music.setVolume(100);
+                            menu.setMuteButton(isMusicMuted);
+                        }
+                        
+                    }
                 }
-                // Kod do wykonania po ukoñczeniu gry
-                if (currentScreen == &map && map.getGameOverState() == true && i % 2 == 0) {
+                //Zatrzymanie odtwarazania muzyki z menu
+                if (currentScreen == &map) {
+                    m_music.stop();
+                }
+                // Kod do wykonania po przegranej grze
+                if (currentScreen == &map && map.getGameOverState() == true && changeScreen % 2 == 0) {
                     currentScreen = &endGame;
-                    i += 1;
+                    changeScreen = 2;
                 }
 
-                if (currentScreen == &map && map.getGameOverState() == true && i % 2 == 1) {
-                    currentScreen = &map;
-                    i += 1;
+                //Kod do wykonania resetu mapy
+                if (currentScreen == &map && map.getGameOverState() == true && changeScreen % 2 == 1) {
+                    currentScreen = &endGame;
+                    changeScreen = 2;
                     map.reset();
                 }
-                // Kod do wykonania po klikniêciu na opcjê "menu" i czy wcisnieto lewy przycisk myszy
+
+                //Kod do wykonania po wygranej grze
+                if (currentScreen == &map && map.Win == true && changeScreen % 2 == 0) {
+                    currentScreen = &winGame;
+                    changeScreen = 1;
+                }
+
+                //Kod do wykonania resetu mapy
+                if (currentScreen == &map && map.Win == true && changeScreen % 2 == 1) {
+                    currentScreen = &winGame;
+                    changeScreen = 1;
+                    map.reset();
+                }
+
+                //Kod do wykonania po klikni?ciu na opcj? "menu" i czy wci?ni?to lewy przycisk myszy
+                if (currentScreen == &winGame) {
+                    if ((winGame.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
+                        currentScreen = &menu;
+                        //Uruchomienie od nowa muzyki z menu
+                        m_music.reset();
+                    }
+                }
+
+                // Kod do wykonania po klikni?ciu na opcj? "menu" i czy wcisnieto lewy przycisk myszy
                 if (currentScreen == &endGame) {
                     if ((endGame.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
                         currentScreen = &menu;
-                    }
-                }
-                if (currentScreen == &options) {
-                    if ((options.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
-                        currentScreen = &menu;
+                        //Uruchomienie od nowa muzyki z menu
+                        m_music.reset();
                     }
                 }
                 if (currentScreen == &about) {
+                    about.reset();
                     if ((about.isMouseOverBackButton()) && (event.mouseButton.button == sf::Mouse::Left)) {
                         currentScreen = &menu;
                     }
@@ -94,8 +134,8 @@ void Engine::run(){
         window.clear();
 
         menu.updateMousePosition(sf::Mouse::getPosition(window));
+        winGame.updateMousePosition(sf::Mouse::getPosition(window));
         endGame.updateMousePosition(sf::Mouse::getPosition(window));
-        options.updateMousePosition(sf::Mouse::getPosition(window));
         about.updateMousePosition(sf::Mouse::getPosition(window));
 
         currentScreen->draw(window);
