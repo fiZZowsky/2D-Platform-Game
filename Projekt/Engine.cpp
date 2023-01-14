@@ -8,7 +8,6 @@ Engine::~Engine() { }
 
 void Engine::run() {
     sf::RenderWindow window(VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "2D Platform Game", sf::Style::Fullscreen);
-
     int changeScreen = 0;
     currentScreen = &menu;
     //Uruchomienie muzyki

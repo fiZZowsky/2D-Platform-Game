@@ -1,7 +1,8 @@
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\vc143.pdb
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\vc143.idb
+c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\wingamescreen.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\player.obj
-c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\optionsscreen.obj
+c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\menumusic.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\menu.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\map.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\main.obj
@@ -10,13 +11,16 @@ c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\gamescreen.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\engine.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\endgamescreen.obj
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\aboutscreen.obj
-c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\wingamescreen.obj
 c:\users\fizzy\desktop\2d-platform-game\x64\debug\projekt.exe
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.ilk
 c:\users\fizzy\desktop\2d-platform-game\x64\debug\projekt.pdb
+c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.res
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\cl.command.1.tlog
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\cl.read.1.tlog
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\cl.write.1.tlog
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\link.command.1.tlog
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\link.read.1.tlog
 c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\link.write.1.tlog
+c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\rc.command.1.tlog
+c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\rc.read.1.tlog
+c:\users\fizzy\desktop\2d-platform-game\projekt\x64\debug\projekt.tlog\rc.write.1.tlog

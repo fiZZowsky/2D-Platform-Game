@@ -41,9 +41,16 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuMusic.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="WinGameScreen.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Projekt.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="logo.ico" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -97,6 +104,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
