@@ -23,7 +23,7 @@ void Menu::set() {
 	backgroundSprite.setTexture(backgroundtexture);
 
 	// Ustawienie tekstow dla poszczegolnych opcji
-	options = { "Play", "About", "Quit", "Alpha v0.0.7" };
+	options = { "Play", "About", "Quit", "Alpha v1.0.0" };
 	
 	textsCoords = { {865,390},{840,520},{865,650}, {1660,1040} };
 	sizes = { MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE,MENU_BUTTONS_TEXT_SIZE, MENU_BUTTONS_TEXT_SIZE - 30 };
